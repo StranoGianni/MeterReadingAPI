@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.16.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Moq" Version="4.17.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="MeterReadingUnitTests\" />
+    <None Remove="MockData\" />
+    <None Remove="MockData\CSVFiles\" />
+    <None Remove="MockData\CSVFiles\Meter_Reading.csv" />
+    <None Remove="Moq" />
+    <None Remove="SeedData\" />
+    <None Remove="SeedDataMock\Meter_Reading2.csv" />
+    <None Remove="SeedDataMock\Test_Accounts.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MeterReadingUnitTests\" />
+    <Folder Include="MockData\" />
+    <Folder Include="SeedDataMock\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="MockData\CSVFiles\Test_Accounts.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SeedDataMock\Test_Accounts.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EnsekMeterReadingAPI\EnsekMeterReadingAPI.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SeedDataMock\Meter_Reading.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SeedDataMock\Test_Accounts.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
